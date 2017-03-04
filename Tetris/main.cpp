@@ -2,13 +2,21 @@
 #include <time.h>
 
 using namespace sf;
+using namespace std;
 
 const int M = 20;
 const int N = 10;
 
 int field[M][N] = { 0 };
+
+
+
 struct Point 
-{ int x, y; } a[4], b[4];
+{ int x, y; //members
+};
+
+Point a[4];
+Point b[4];
 
 
 int figures[7][4] =
@@ -30,15 +38,17 @@ bool check() {
 		}
 		else if (field[a[i].y][a[i].x]) {
 			return 0;
-		}
-		return 1;
+		}	
 	}
+	return 1;
 	
 }
 
 int main()
 {
 	srand(time(0));
+
+	
 
 	//Render window - work place
 	RenderWindow window(VideoMode(329, 480), "The Game!");
@@ -57,17 +67,20 @@ int main()
 	float timer = 0, delay=0.3;
 	Clock clock;
 
+
 	//Game play loop
 	while (window.isOpen())
 	{
-			
+		//Take current clock time	
 		float time = clock.getElapsedTime().asSeconds();
+		//Reset clock
 		clock.restart();
+		//Add loop passed time to timer. Now, each loop variable time will take clock elapsed time, and reset clock
 		timer = timer + time;
 
-		//wait for following events
+		//wait for following events. SMFL definition
 		Event e;
-		while (window.pollEvent(e))
+		while (window.pollEvent(e)) //SFML pollEvent function - check for events and return false if no events found
 		{
 			//if closed
 			if (e.type == Event::Closed) {
@@ -92,7 +105,15 @@ int main()
 
 		// Move tile after event keypress. Initially it is 0 and after key press it is changed +-1
 		for (int i = 0; i < 4; i++) {
+			b[i] = a[i];
 			a[i].x = a[i].x + dx;
+		}
+
+
+		if (!check()) {
+			for (int i = 0; i < 4; i++) {
+				a[i] = b[i];
+			}
 		}
 
 		//Rotate after event.
@@ -115,7 +136,9 @@ int main()
 		//Tikaj vrijeme i za svakih 0.3 sekunde spustaj jednu
 		if (timer > delay) {
 			for (int i = 0; i < 4; i++) {
-				a[i].y = a[i].y + 1;
+				//a[i].y = a[i].y + 1;
+				b[i] = a[i]; 
+				a[i].y += 1;
 			}
 
 			if (!check()) {
@@ -145,23 +168,17 @@ int main()
 			for (int j = 0; j < N; j++) {
 				if (field[i][j] == 0) {
 					continue;
-					
 				}
 				s.setPosition(j * 18, i * 18);
 				window.draw(s);
 			}
 		}
-		
-
 
 		//show 4 tiles based on struckt
 		for (int i = 0; i < 4; i++) {
 			s.setPosition(a[i].x * 18, a[i].y * 18);
 			window.draw(s);
 		}
-
-
-		
 		window.display();
 	}
 	
