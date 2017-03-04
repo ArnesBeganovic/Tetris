@@ -1,9 +1,10 @@
 ﻿  main.cpp
-main.cpp(41): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-main.cpp(57): warning C4305: 'initializing': truncation from 'double' to 'float'
-main.cpp(150): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-main.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\abeganar\documents\visual studio 2015\projects\tetris\tetris\main.cpp(37): warning C4715: 'check': not all control paths return a value
+main.cpp(49): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+main.cpp(70): warning C4305: 'initializing': truncation from 'double' to 'float'
+main.cpp(110): warning C4305: '=': truncation from 'double' to 'float'
+main.cpp(188): warning C4305: '=': truncation from 'double' to 'float'
+main.cpp(200): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+main.cpp(208): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   main.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
-  Tetris.vcxproj -> C:\Users\abeganar\Documents\Visual Studio 2015\Projects\Tetris\x64\Debug\Tetris.exe
-  Tetris.vcxproj -> C:\Users\abeganar\Documents\Visual Studio 2015\Projects\Tetris\x64\Debug\Tetris.pdb (Partial PDB)
+  Tetris.vcxproj -> C:\Users\abeganar\Source\Repos\Tetris\x64\Debug\Tetris.exe
+  Tetris.vcxproj -> C:\Users\abeganar\Source\Repos\Tetris\x64\Debug\Tetris.pdb (Partial PDB)
